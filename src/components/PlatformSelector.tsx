@@ -13,12 +13,18 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
     label: platform.name,
   }));
 
+  console.log(platforms);
+
   return (
     <Select
-      sx={{ width: "45%" }}
+      sx={{ width: "45%", whiteSpace: "nowrap" }}
       label="Platforms"
-      placeholder="Select Platform"
-      data={platforms ? [...platforms] : []}
+      data={
+        platforms
+          ? [{ value: "", label: "All platforms" }, ...platforms]
+          : [{ value: "", label: "All platforms" }]
+      }
+      defaultValue=""
       onChange={(id) =>
         onSelectPlatform(
           data?.find((platform) => platform.id === parseInt(id as string)) ||

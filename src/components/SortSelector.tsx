@@ -16,7 +16,7 @@ const SortSelector = ({ onSelectSortBy }: Props) => {
   ];
   return (
     <Select
-      sx={{ width: "45%" }}
+      sx={{ maxWidth: 250 }}
       onChange={(value) => onSelectSortBy(value)}
       label="Sort by:"
       data={sortItem}

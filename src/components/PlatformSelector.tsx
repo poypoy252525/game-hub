@@ -13,11 +13,9 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
     label: platform.name,
   }));
 
-  console.log(platforms);
-
   return (
     <Select
-      sx={{ width: "45%", whiteSpace: "nowrap" }}
+      sx={{ width: 250 }}
       label="Platforms"
       data={
         platforms

@@ -43,7 +43,7 @@ function App() {
       })}
     >
       <GameHeading gameQuery={gameQuery} />
-      <Group mb="md" sx={{ width: "100%", maxWidth: 470 }}>
+      <Group mb="md" noWrap>
         <PlatformSelector
           onSelectPlatform={(platform) =>
             setGameQuery({ ...gameQuery, platform })

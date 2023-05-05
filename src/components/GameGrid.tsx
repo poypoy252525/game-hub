@@ -17,12 +17,12 @@ const GameGrid = ({ gameQuery }: Props) => {
       <Grid>
         {isLoading
           ? gameSkeletonCount.map((count) => (
-              <Grid.Col xs={12} sm={6} lg={4} key={count}>
+              <Grid.Col xs={12} sm={6} lg={4} xl={3} key={count}>
                 <GameCardSkeleton />
               </Grid.Col>
             ))
           : data?.map((game) => (
-              <Grid.Col xs={12} sm={6} lg={4} key={game.id}>
+              <Grid.Col xs={12} sm={6} lg={4} xl={3} key={game.id}>
                 <GameCard game={game} />
               </Grid.Col>
             ))}

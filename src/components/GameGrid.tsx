@@ -22,7 +22,7 @@ const GameGrid = ({ gameQuery }: Props) => {
   return (
     <>
       <InfiniteScroll
-        loader={null}
+        loader={<Loader w={"100%"} my={45} />}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
         dataLength={dataLengthCount}

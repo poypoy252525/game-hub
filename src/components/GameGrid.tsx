@@ -1,4 +1,4 @@
-import { Button, Grid, Loader } from "@mantine/core";
+import { Box, Button, Grid, Loader } from "@mantine/core";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
@@ -22,10 +22,11 @@ const GameGrid = ({ gameQuery }: Props) => {
   return (
     <>
       <InfiniteScroll
-        loader={<Loader sx={{ width: "100%" }} />}
+        loader={null}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
         dataLength={dataLengthCount}
+        style={{ overflow: "hidden" }}
       >
         <Grid>
           {isLoading

@@ -8,7 +8,7 @@ interface Props {
 const PlatformSelector = ({ onSelectPlatform }: Props) => {
   const { data } = usePlatforms();
 
-  const platforms = data?.map((platform) => ({
+  const platforms = data?.results.map((platform) => ({
     value: `${platform.id}`,
     label: platform.name,
   }));
@@ -25,8 +25,9 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
       defaultValue=""
       onChange={(id) =>
         onSelectPlatform(
-          data?.find((platform) => platform.id === parseInt(id as string)) ||
-            null
+          data?.results.find(
+            (platform) => platform.id === parseInt(id as string)
+          ) || null
         )
       }
     />

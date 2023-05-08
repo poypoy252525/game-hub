@@ -21,7 +21,7 @@ const GameGrid = ({ gameQuery }: Props) => {
                 <GameCardSkeleton />
               </Grid.Col>
             ))
-          : data?.map((game) => (
+          : data?.results.map((game) => (
               <Grid.Col xs={12} sm={6} lg={4} xl={3} key={game.id}>
                 <GameCard game={game} />
               </Grid.Col>

@@ -22,7 +22,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
               <Skeleton height={18} width="75%" />
             </Group>
           ))
-        : data?.map((genre) => (
+        : data?.results.map((genre) => (
             <NavLink
               sx={{ borderRadius: 8 }}
               active={selectedGenre?.id === genre.id}

@@ -7,6 +7,9 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from "@mantine/core";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const ThemeProvider = () => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("dark");
@@ -23,7 +26,9 @@ const ThemeProvider = () => {
         withGlobalStyles
         withNormalizeCSS
       >
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   );

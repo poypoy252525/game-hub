@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
 interface Props {
-  onSubmit: (search: string | null) => void;
+  onSubmit: (search?: string) => void;
 }
 
 const SearchInput = ({ onSubmit }: Props) => {

@@ -13,7 +13,7 @@ import { BsSun, BsMoonStars } from "react-icons/bs";
 import SearchInput from "./SearchInput";
 
 interface Props {
-  onSearchSubmit: (search: string | null) => void;
+  onSearchSubmit: (search?: string) => void;
 }
 
 const TopBar = ({ onSearchSubmit }: Props) => {

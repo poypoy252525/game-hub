@@ -1,7 +1,7 @@
 import { Select } from "@mantine/core";
 
 interface Props {
-  onSelectSortBy: (value: string | null) => void;
+  onSelectSortBy: (value?: string) => void;
 }
 
 const SortSelector = ({ onSelectSortBy }: Props) => {
@@ -17,7 +17,7 @@ const SortSelector = ({ onSelectSortBy }: Props) => {
   return (
     <Select
       sx={{ maxWidth: 250 }}
-      onChange={(value) => onSelectSortBy(value)}
+      onChange={(value) => onSelectSortBy(value as string)}
       label="Sort by:"
       data={sortItem}
       defaultValue=""

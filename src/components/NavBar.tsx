@@ -4,7 +4,7 @@ import { Genre } from "../hooks/useGenres";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenre?: number;
 }
 
 const NavBar = ({ onSelectGenre, selectedGenre }: Props) => {
@@ -12,7 +12,7 @@ const NavBar = ({ onSelectGenre, selectedGenre }: Props) => {
     <Navbar hiddenBreakpoint="md" hidden width={{ base: 200, md: 240 }}>
       <Box p="xs" component={ScrollArea}>
         <GenreList
-          selectedGenre={selectedGenre}
+          selectedGenreId={selectedGenre}
           onSelectGenre={onSelectGenre}
         />
       </Box>

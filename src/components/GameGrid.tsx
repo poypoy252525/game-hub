@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Loader } from "@mantine/core";
+import { Grid, Loader } from "@mantine/core";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";

@@ -1,6 +1,7 @@
 import { Badge, Card, Group, Image, Rating, Text } from "@mantine/core";
 import { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
+import getCroppedImageURL from "../services/image-url";
 
 interface Props {
   game: Game;
@@ -14,7 +15,7 @@ const GameCard = ({ game }: Props) => {
           sx={{ objectFit: "cover" }}
           alt={game.name}
           height={200}
-          src={game.background_image}
+          src={getCroppedImageURL(game.background_image)}
         />
       </Card.Section>
       <Group noWrap position="apart" mt="lg">

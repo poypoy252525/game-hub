@@ -1,12 +1,10 @@
 import { Select } from "@mantine/core";
-import usePlatforms, { Platform } from "../hooks/usePlatforms";
+import usePlatforms from "../hooks/usePlatforms";
+import useGameQueryStore from "../stores/gameQueryStore";
 
-interface Props {
-  onSelectPlatform: (id: Platform | null) => void;
-}
-
-const PlatformSelector = ({ onSelectPlatform }: Props) => {
+const PlatformSelector = () => {
   const { data } = usePlatforms();
+  const setPlatformId = useGameQueryStore((s) => s.setPlatformId);
 
   const platforms = data?.results.map((platform) => ({
     value: `${platform.id}`,
@@ -23,13 +21,9 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
           : [{ value: "", label: "All platforms" }]
       }
       defaultValue=""
-      onChange={(id) =>
-        onSelectPlatform(
-          data?.results.find(
-            (platform) => platform.id === parseInt(id as string)
-          ) || null
-        )
-      }
+      onChange={(id) => {
+        setPlatformId(parseInt(id as string) || undefined);
+      }}
     />
   );
 };

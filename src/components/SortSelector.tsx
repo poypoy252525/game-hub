@@ -1,10 +1,8 @@
 import { Select } from "@mantine/core";
+import useGameQueryStore from "../stores/gameQueryStore";
 
-interface Props {
-  onSelectSortBy: (value?: string) => void;
-}
-
-const SortSelector = ({ onSelectSortBy }: Props) => {
+const SortSelector = () => {
+  const setSortBy = useGameQueryStore((s) => s.setSortBy);
   const sortItem = [
     { value: "", label: "Relevance" },
     { value: "name", label: "Name" },
@@ -17,7 +15,7 @@ const SortSelector = ({ onSelectSortBy }: Props) => {
   return (
     <Select
       sx={{ maxWidth: 250 }}
-      onChange={(value) => onSelectSortBy(value as string)}
+      onChange={(value) => setSortBy(value as string)}
       label="Sort by:"
       data={sortItem}
       defaultValue=""

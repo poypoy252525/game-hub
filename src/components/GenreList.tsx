@@ -1,13 +1,12 @@
 import { NavLink, Image, Group, Skeleton, Text, Box } from "@mantine/core";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
+import useGameQueryStore from "../stores/gameQueryStore";
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId?: number;
-}
-
-const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreList = () => {
   const { data, error, isLoading } = useGenres();
+  const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
+
   const count = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   if (error) return null;
   return (
@@ -25,7 +24,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
         : data?.results.map((genre) => (
             <NavLink
               sx={{ borderRadius: 8 }}
-              active={selectedGenreId === genre.id}
+              active={genreId === genre.id}
               key={genre.id}
               label={genre.name}
               icon={
@@ -40,7 +39,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
                   src={genre.image_background}
                 />
               }
-              onClick={() => onSelectGenre(genre)}
+              onClick={() => setGenreId(genre.id)}
             />
           ))}
     </Box>

@@ -1,18 +1,16 @@
 import { TextInput } from "@mantine/core";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
+import useGameQueryStore from "../stores/gameQueryStore";
 
-interface Props {
-  onSubmit: (search?: string) => void;
-}
-
-const SearchInput = ({ onSubmit }: Props) => {
+const SearchInput = () => {
+  const setSearchText = useGameQueryStore((s) => s.setSearchText);
   const ref = useRef<HTMLInputElement>(null);
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        onSubmit(ref.current?.value as string);
+        setSearchText(ref.current?.value);
       }}
     >
       <TextInput

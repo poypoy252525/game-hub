@@ -12,11 +12,7 @@ import Logo from "../assets/react.svg";
 import { BsSun, BsMoonStars } from "react-icons/bs";
 import SearchInput from "./SearchInput";
 
-interface Props {
-  onSearchSubmit: (search?: string) => void;
-}
-
-const TopBar = ({ onSearchSubmit }: Props) => {
+const TopBar = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   return (
     <Header p="sm" height={60}>
@@ -32,7 +28,7 @@ const TopBar = ({ onSearchSubmit }: Props) => {
         <Group noWrap>
           <MediaQuery smallerThan="md" styles={{ width: "100%" }}>
             <Box>
-              <SearchInput onSubmit={onSearchSubmit} />
+              <SearchInput />
             </Box>
           </MediaQuery>
           <ActionIcon

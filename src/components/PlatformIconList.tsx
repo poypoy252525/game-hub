@@ -31,7 +31,7 @@ const PlatformIconList = ({ platforms }: Props) => {
   };
   return (
     <Group spacing="xs">
-      {platforms.map((platform) => (
+      {platforms?.map((platform) => (
         <Text
           key={platform.id}
           fz={14}

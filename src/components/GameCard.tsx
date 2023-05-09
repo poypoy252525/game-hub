@@ -20,7 +20,7 @@ const GameCard = ({ game }: Props) => {
       </Card.Section>
       <Group noWrap position="apart" mt="lg">
         <PlatformIconList
-          platforms={game.parent_platforms.map(
+          platforms={game.parent_platforms?.map(
             (parentPlatform) => parentPlatform.platform
           )}
         />

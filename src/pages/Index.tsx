@@ -1,9 +1,9 @@
 import { Box, Grid, Group } from "@mantine/core";
-import GenreList from "./GenreList";
-import GameGrid from "./GameGrid";
-import GameHeading from "./GameHeading";
-import PlatformSelector from "./PlatformSelector";
-import SortSelector from "./SortSelector";
+import GenreList from "../components/GenreList";
+import GameGrid from "../components/GameGrid";
+import GameHeading from "../components/GameHeading";
+import PlatformSelector from "../components/PlatformSelector";
+import SortSelector from "../components/SortSelector";
 
 const Index = () => {
   return (

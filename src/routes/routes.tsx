@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../pages/Layout";
-import Index from "../components/Index";
-import GameDetails from "../components/GameDetails";
+import Index from "../pages/Index";
+import GameDetails from "../pages/GameDetails";
 
 const router = createBrowserRouter([
   {

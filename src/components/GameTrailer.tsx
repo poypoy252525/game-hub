@@ -5,12 +5,20 @@ interface Props {
 }
 
 const GameTrailer = ({ gameId }: Props) => {
-  const { data: trailer } = useGameTrailer(gameId);
-
+  const { data: trailer, isLoading, error } = useGameTrailer(gameId);
   const first = trailer?.results[0];
   if (!first) return null;
+  if (error) throw error;
+  if (isLoading) return null;
   return (
-    <video width="100%" src={first.data.max} poster={first.preview} controls />
+    <video
+      style={{ borderRadius: 12, marginBottom: 6 }}
+      width="100%"
+      src={first.data.max}
+      poster={first.preview}
+      controls
+      muted
+    />
   );
 };
 

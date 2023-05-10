@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useGameDetails from "../hooks/useGameDetails";
 import { Title, Text, Box, Spoiler, Grid, Badge } from "@mantine/core";
 import DefinitionItem from "./../components/DefinitionItem";
+import GameTrailer from "./../components/GameTrailer";
 
 const GameDetails = () => {
   const params = useParams();
@@ -55,6 +56,9 @@ const GameDetails = () => {
             </Grid.Col>
           </Grid>
         </Box>
+      </Grid.Col>
+      <Grid.Col md={6}>
+        <GameTrailer gameId={game?.id!} />
       </Grid.Col>
     </Grid>
   );

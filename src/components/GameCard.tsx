@@ -1,13 +1,15 @@
 import { Badge, Card, Group, Image, Rating, Text } from "@mantine/core";
-import { Game } from "../hooks/useGames";
+import { Game } from "../entities/Game";
 import PlatformIconList from "./PlatformIconList";
 import getCroppedImageURL from "../services/image-url";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
+  const navigate = useNavigate();
   return (
     <Card shadow="sm" sx={{ borderRadius: 12, height: "100%" }}>
       <Card.Section>
@@ -26,9 +28,16 @@ const GameCard = ({ game }: Props) => {
         />
         <Badge>{game.metacritic}</Badge>
       </Group>
-      <Text fw={500} fz={"xl"}>
+
+      <Text
+        sx={{ cursor: "pointer" }}
+        onClick={() => navigate("/games/" + game.id)}
+        fw={500}
+        fz={"xl"}
+      >
         {game.name}
       </Text>
+
       <Group spacing="sm">
         <Rating value={game.rating} size="xs" readOnly fractions={4} />
         <Text fz="sm">{game.rating}</Text>

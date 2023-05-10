@@ -5,9 +5,9 @@ import {
   Text,
   Box,
   Spoiler,
-  Grid,
   Badge,
   MediaQuery,
+  SimpleGrid,
 } from "@mantine/core";
 import DefinitionItem from "./../components/DefinitionItem";
 import GameTrailer from "./../components/GameTrailer";
@@ -19,60 +19,57 @@ const GameDetails = () => {
   return (
     <MediaQuery smallerThan="md" styles={{ padding: 12 }}>
       <Box p={70}>
-        <Grid gutter={60}>
-          <Grid.Col md={6}>
-            <Box mb={40}>
-              <MediaQuery smallerThan="md" styles={{ fontSize: 24 }}>
-                <Title fz={70} order={1} mb={12}>
-                  {game?.name}
-                </Title>
-              </MediaQuery>
-              <Title order={3}>About</Title>
-              <Spoiler maxHeight={120} hideLabel="hide" showLabel="show more">
-                <Text>{game?.description_raw}</Text>
-              </Spoiler>
-            </Box>
-            <Grid>
-              <Grid.Col xs={12} md={6}>
-                <DefinitionItem heading="Platforms">
-                  {game?.parent_platforms.map(({ platform }) => (
-                    <Text component="span" key={platform.id}>
-                      {` ${platform.name},`}
-                    </Text>
-                  ))}
-                </DefinitionItem>
-              </Grid.Col>
-              <Grid.Col xs={12} md={6}>
-                <DefinitionItem heading="Metascore">
-                  <Badge>{game?.metacritic}</Badge>
-                </DefinitionItem>
-              </Grid.Col>
-              <Grid.Col xs={12} md={6}>
-                <DefinitionItem heading="Genres">
-                  {game?.genres.map((genre) => (
-                    <Text key={genre.id}>{genre.name}</Text>
-                  ))}
-                </DefinitionItem>
-              </Grid.Col>
-              <Grid.Col xs={12} md={6}>
-                <DefinitionItem heading="Release date">
-                  {game?.released}
-                </DefinitionItem>
-              </Grid.Col>
-              <Grid.Col xs={12} md={6}>
-                <DefinitionItem heading="Publishers">
-                  {game?.publishers.map((publisher) => (
-                    <Text key={publisher.id}>{publisher.name}</Text>
-                  ))}
-                </DefinitionItem>
-              </Grid.Col>
-            </Grid>
-          </Grid.Col>
-          <Grid.Col md={6}>
+        <SimpleGrid
+          spacing={60}
+          breakpoints={[
+            { maxWidth: "xs", cols: 1 },
+            { minWidth: "md", cols: 2 },
+          ]}
+        >
+          <Box>
+            <MediaQuery smallerThan="md" styles={{ fontSize: 24 }}>
+              <Title fz={70} order={1} mb={12}>
+                {game?.name}
+              </Title>
+            </MediaQuery>
+            <Title order={3}>About</Title>
+            <Spoiler maxHeight={120} hideLabel="hide" showLabel="show more">
+              <Text>{game?.description_raw}</Text>
+            </Spoiler>
+            <SimpleGrid cols={2}>
+              <DefinitionItem heading="Platforms">
+                {game?.parent_platforms.map(({ platform }) => (
+                  <Text component="span" key={platform.id}>
+                    {` ${platform.name},`}
+                  </Text>
+                ))}
+              </DefinitionItem>
+              <DefinitionItem heading="Metascore">
+                <Badge>{game?.metacritic}</Badge>
+              </DefinitionItem>
+
+              <DefinitionItem heading="Genres">
+                {game?.genres.map((genre) => (
+                  <Text key={genre.id}>{genre.name}</Text>
+                ))}
+              </DefinitionItem>
+
+              <DefinitionItem heading="Release date">
+                {game?.released}
+              </DefinitionItem>
+
+              <DefinitionItem heading="Publishers">
+                {game?.publishers.map((publisher) => (
+                  <Text key={publisher.id}>{publisher.name}</Text>
+                ))}
+              </DefinitionItem>
+            </SimpleGrid>
+          </Box>
+          <Box>
             <GameTrailer gameId={game?.id!} />
             <GameScreenshot gameId={game?.id!} />
-          </Grid.Col>
-        </Grid>
+          </Box>
+        </SimpleGrid>
       </Box>
     </MediaQuery>
   );

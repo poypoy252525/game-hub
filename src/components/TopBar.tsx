@@ -11,6 +11,7 @@ import {
 import Logo from "../assets/react.svg";
 import { BsSun, BsMoonStars } from "react-icons/bs";
 import SearchInput from "./SearchInput";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -20,9 +21,18 @@ const TopBar = () => {
         <Group noWrap>
           <Image width={30} src={Logo} />
           <MediaQuery smallerThan="md" styles={{ fontSize: 18 }}>
-            <Title sx={{ whiteSpace: "nowrap" }} order={3}>
-              Game Hub
-            </Title>
+            <Link
+              style={{
+                textDecoration: "none",
+                fontSize: "inherit",
+                color: "inherit",
+              }}
+              to="/"
+            >
+              <Title sx={{ whiteSpace: "nowrap" }} order={3}>
+                Game Hub
+              </Title>
+            </Link>
           </MediaQuery>
         </Group>
         <Group noWrap>

@@ -27,7 +27,10 @@ const GameDetails = () => {
           ]}
         >
           <Box>
-            <MediaQuery smallerThan="md" styles={{ fontSize: 24 }}>
+            <MediaQuery
+              smallerThan="md"
+              styles={{ fontSize: 32, textAlign: "center" }}
+            >
               <Title fz={70} order={1} mb={12}>
                 {game?.name}
               </Title>
@@ -36,7 +39,7 @@ const GameDetails = () => {
             <Spoiler maxHeight={120} hideLabel="hide" showLabel="show more">
               <Text>{game?.description_raw}</Text>
             </Spoiler>
-            <SimpleGrid cols={2}>
+            <SimpleGrid mt={24} cols={2}>
               <DefinitionItem heading="Platforms">
                 {game?.parent_platforms.map(({ platform }) => (
                   <Text component="span" key={platform.id}>
